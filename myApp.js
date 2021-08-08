@@ -29,15 +29,22 @@ app.get("/now", function(req, res, next){
   res.json(
     {time: req.time}
   )
-    }
+}
   );
 
 app.get("/:word/echo", function(req, res){
-    res.json(
-    {echo: req.params.word}
-    )
-})
+  res.json(
+  {echo: req.params.word}
+  )
+});
 
+app.get("/name", function(req, res){
+    var firstname = req.query.first;
+    var lastname = req.query.last;
+    res.json(
+    {name: `${firstname} ${lastname}`}
+    )
+});
 
 
 
