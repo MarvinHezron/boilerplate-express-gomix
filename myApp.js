@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
@@ -38,12 +40,13 @@ app.get("/:word/echo", function(req, res){
   )
 });
 
+
 app.get("/name", function(req, res){
-    var firstname = req.query.first;
-    var lastname = req.query.last;
-    res.json(
-    {name: `${firstname} ${lastname}`}
-    )
+  var firstname = req.query.first;
+  var lastname = req.query.last;
+  res.json(
+  {name: `${firstname} ${lastname}`}
+  )
 });
 
 
